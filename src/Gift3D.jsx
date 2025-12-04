@@ -141,7 +141,7 @@ function GiftBox({ open, onOpenLetter }) {
     if (letterRef.current) {
       const lift = THREE.MathUtils.lerp(0, 0.7, openProgress.current)
       const tilt = THREE.MathUtils.lerp(Math.PI / 16, Math.PI / 9, openProgress.current)
-      letterRef.current.position.set(0, 0.16 + lift, -1.08)
+      letterRef.current.position.set(0, 0.48 + lift, 0.35)
       letterRef.current.rotation.set(tilt, Math.PI, 0)
       letterRef.current.visible = openProgress.current > 0.15
     }
