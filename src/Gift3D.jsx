@@ -139,10 +139,10 @@ function GiftBox({ open, onOpenLetter }) {
       glowRef.current.distance = 4 + openProgress.current * 3
     }
     if (letterRef.current) {
-      const lift = THREE.MathUtils.lerp(0, 0.62, openProgress.current)
-      const tilt = THREE.MathUtils.lerp(-Math.PI / 10, -Math.PI / 5.5, openProgress.current)
-      letterRef.current.position.y = 0.3 + lift
-      letterRef.current.rotation.x = tilt
+      const lift = THREE.MathUtils.lerp(0, 0.7, openProgress.current)
+      const tilt = THREE.MathUtils.lerp(Math.PI / 16, Math.PI / 9, openProgress.current)
+      letterRef.current.position.set(0, 0.16 + lift, -1.08)
+      letterRef.current.rotation.set(tilt, Math.PI, 0)
       letterRef.current.visible = openProgress.current > 0.15
     }
     if (letterMeshRef.current && letterMeshRef.current.material) {
@@ -157,7 +157,7 @@ function GiftBox({ open, onOpenLetter }) {
       <mesh geometry={ribbonBand} material={ribbonMaterial} position={[0, 0.18, 0]} castShadow receiveShadow />
 
       {/* Carta interior (escondida hasta abrir) */}
-      <group ref={letterRef} position={[0, 0.3, 0]} rotation={[-Math.PI / 10, 0, 0]} visible={false}>
+      <group ref={letterRef} visible={false}>
         <mesh
           ref={letterMeshRef}
           geometry={new THREE.PlaneGeometry(1.6, 1.1, 1, 1)}
